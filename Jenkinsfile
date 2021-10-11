@@ -1,8 +1,6 @@
-pipeline {
+def app
 
-  agent any
-
-  stages {
+node {
 
     stage('Checkout Source') {
       steps {
@@ -49,7 +47,5 @@ pipeline {
     stage('Complete') {
         sh "echo 'The end'"
     }
-
-  }
 
 }
