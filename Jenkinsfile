@@ -3,9 +3,9 @@ def app
 node {
 
     stage('Checkout Source') {
-      steps {
+
         git url:'https://github.com/guriOH/docker-auto-deploy.git', branch:'main'
-      }
+     
     }
     
     stage('Ready') {
