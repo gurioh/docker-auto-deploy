@@ -1,40 +1,39 @@
----
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: hello-blue-whale
+  name: wildfly-deployment
+  labels:
+    app: wildfly
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: hello-whale-app
-      version: blue
+      app: wildfly
   template:
     metadata:
-      name: hello-blue-whale-pod
       labels:
-        app: hello-whale-app
-        version: blue
+        app: wildfly
     spec:
       containers:
-      - name: hello-whale-container
-        image: helloworld:latest
+      - name: wildfly
+        image: nginx:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 80
+        - containerPort: 8080
+      nodeSelector:
+        key: worker
 ---
 apiVersion: v1
-kind: Service 
+kind: Service
 metadata:
-  name: hello-whale-svc
-  labels:
-    app: hello-whale-app
+  name: wildfly
 spec:
   selector:
-    app: hello-whale-app
-    version: blue
-  type: NodePort
+    app: wildfly
   ports:
-  - nodePort: 31113
-    port: 80
-    targetPort: 80
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
+---
