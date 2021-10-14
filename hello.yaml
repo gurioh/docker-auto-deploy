@@ -1,39 +1,12 @@
 
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: wildfly-deployment
-  labels:
-    app: wildfly
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: wildfly
-  template:
-    metadata:
-      labels:
-        app: wildfly
-    spec:
-      containers:
-      - name: wildfly
-        image: nginx:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
-      nodeSelector:
-        key: worker
----
 apiVersion: v1
-kind: Service
+kind: Pod
 metadata:
-  name: wildfly
+  name: private-reg
 spec:
-  selector:
-    app: wildfly
-  ports:
-    - protocol: TCP
-      port: 8080
-      targetPort: 8080
-  type: ClusterIP
----
+  containers:
+  - name: private-reg-container-nginx
+    image: 10.99.87.210:5000/nginx:latest
+  imagePullSecrets:
+  - name: regcred
+
