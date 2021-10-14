@@ -54,7 +54,7 @@ node {
     // kubeconfigID에는 앞서 설정한 Kubernetes Credentials를 입력하고 'sh'는 쿠버네티스 클러스터에 원격으로 실행시킬 명령어를 기술한다.
     stage('Kubernetes deploy') {
         kubernetesDeploy configs: "hello.yaml", kubeconfigId: 'kubeconfig'
-        sh "/usr/local/bin/kubectl --kubeconfig=/u01/kube-config.yaml rollout restart deployment/test-deployment -n zuno"
+//         sh "kubectl --kubeconfig=/u01/kube-config.yaml rollout restart deployment/test-deployment"
     }
 
     stage('Complete') {
