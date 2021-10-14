@@ -5,13 +5,26 @@ node {
     stage('Checkout Source') {
 
         git url:'https://github.com/guriOH/docker-auto-deploy.git', branch:'main'
-     
+        withMaven(
+            // Maven installation declared in the Jenkins "Global Tool Configuration"
+            maven: 'maven 3.8.3', // (1)
+            // Use `$WORKSPACE/.repository` for local repository folder to avoid shared repositories
+            mavenLocalRepo: '.repository', // (2)
+            // Maven settings.xml file defined with the Jenkins Config File Provider Plugin
+            // We recommend to define Maven settings.xml globally at the folder level using
+            // navigating to the folder configuration in the section "Pipeline Maven Configuration / Override global Maven configuration"
+            // or globally to the entire master navigating to  "Manage Jenkins / Global Tools Configuration"
+            //mavenSettingsConfig: 'my-maven-settings' // (3)
+        ) {
+          // Run the maven build
+          sh "mvn clean verify"
+        }
     }
     
-    stage('Ready') {
-      sh "echo 'Ready to build'"
-      mvnHome = tool 'Maven 3.8.3'
-    }
+//     stage('Ready') {
+//       sh "echo 'Ready to build'"
+//       mvnHome = tool 'Maven 3.8.3'
+//     }
     
     // mvn 빌드로 jar파일을 생성하는 stage
     stage('Build'){  
