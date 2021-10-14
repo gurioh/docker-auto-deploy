@@ -29,7 +29,7 @@ node {
     // mvn 빌드로 jar파일을 생성하는 stage
     stage('Build'){  
         sh "echo 'Build Spring Boot Jar'"
-        sh "'${mvnHome}/bin/mvn' clean package"
+        sh "mvn clean package"
     }
     
     
