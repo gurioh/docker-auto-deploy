@@ -3,6 +3,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: build-test
+  namespace: dev
 spec:
   containers:
   - name: build-test
