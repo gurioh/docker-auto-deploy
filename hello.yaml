@@ -2,11 +2,11 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: private-reg
+  name: build-test
 spec:
   containers:
-  - name: private-reg-container-nginx
-    image: 10.99.87.210:5000/nginx:latest
+  - name: build-test
+    image: 10.99.87.210:5000/build-test:latest
   imagePullSecrets:
   - name: regcred
 
