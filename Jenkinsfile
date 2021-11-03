@@ -1,6 +1,8 @@
 def app
 
 node {
+    def nexus = "10.99.87.210:5000"
+    def nexusCredential = "nexus"
 
     stage('Checkout Source') {
 
@@ -31,16 +33,22 @@ node {
         app = docker.build("build-test/dockertest")
     }
     
-//       stage("Push image") {
-//             steps {
-//                 script {
-//                     docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-//                             myapp.push("latest")
-//                             myapp.push("${env.BUILD_ID}")
-//                     }
+    stage("Push image") {
+        container('docker') {
+             docker.withRegistry("http://$nexus") {
+                 def customImage = docker.build("build-test/dockertest")
+                 customImage.push()
+             }
+        }
+//         steps {
+//             script {
+//                 docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+//                         myapp.push("latest")
+//                         myapp.push("${env.BUILD_ID}")
 //                 }
 //             }
 //         }
+    }
 
     
     // kubernetes에 배포하는 stage, 배포할 yaml파일(필자의 경우 test.yaml)은 jenkinsfile과 마찬가지로 git소스 root에 위치시킨다.
