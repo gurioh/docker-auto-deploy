@@ -34,14 +34,13 @@ node {
     }
     
     stage("Push image") {
-        steps {
-            container('docker') {
-                 docker.withRegistry("http://$nexus") {
-                     def customImage = docker.build("build-test/dockertest:latest")
-                     customImage.push()
-                 }
-            }
-        }
+        
+         docker.withRegistry("http://$nexus") {
+             def customImage = docker.build("build-test/dockertest:latest")
+             customImage.push()
+         }
+            
+      
 //         steps {
 //             script {
 //                 docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
