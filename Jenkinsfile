@@ -34,11 +34,13 @@ node {
     }
     
     stage("Push image") {
-        container('docker') {
-             docker.withRegistry("http://$nexus") {
-                 def customImage = docker.build("build-test/dockertest:latest")
-                 customImage.push()
-             }
+        steps {
+            container('docker') {
+                 docker.withRegistry("http://$nexus") {
+                     def customImage = docker.build("build-test/dockertest:latest")
+                     customImage.push()
+                 }
+            }
         }
 //         steps {
 //             script {
