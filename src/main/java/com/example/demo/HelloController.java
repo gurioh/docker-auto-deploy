@@ -36,7 +36,7 @@ public class HelloController {
 
     @GetMapping(value = "/test")
     public String getApiTest(){
-        return "HelloWorld";
+        return "HelloWorld 2";
     }
 
 }
