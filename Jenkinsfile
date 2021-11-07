@@ -67,10 +67,12 @@ node {
                 echo "test" > test.yaml
             '''
             sh "ls -al"
-            git url:'https://github.com/guriOH/docker-auto-deploy.git', branch:'main'
-            git add test.yml
-            git commit -m "Add yaml"
-            
+//             git url:'https://github.com/guriOH/docker-auto-deploy.git', branch:'main'
+//             git add test.yml
+//             git commit -m "Add yaml"
+            sh "echo ${params.VERSION}"
+            sh "sed -i s/VERSION/${params.VERSION}/g hello.yaml"
+            sh "cat hello.yalm"
         
 //        sh "sed -i s/VERSION/${params.VERSION}/g hello.yaml"
     }
