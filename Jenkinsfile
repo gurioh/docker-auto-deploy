@@ -4,20 +4,28 @@ node {
     def nexus = "10.99.87.210:5000"
     def nexusCredential = "nexus"
 
-    stage('Checkout Source') {
+//     stage('Checkout Source') {
 
-        git url:'https://github.com/guriOH/docker-auto-deploy.git', branch:'main'
-        withMaven(
-            maven: 'maven 3.8.3', // (1)
-            mavenLocalRepo: '.repository', // (2)
-        ) {
-          // Run the maven build
-          sh "mvn clean verify"
-        }
-    }
+//         git url:'https://github.com/guriOH/docker-auto-deploy.git', branch:'main'
+//         withMaven(
+//             maven: 'maven 3.8.3', // (1)
+//             mavenLocalRepo: '.repository', // (2)
+//         ) {
+//           // Run the maven build
+//           sh "mvn clean verify"
+//         }
+//     }
     
     stage('Ready') {
       sh "echo 'Ready to build'"
+      withMaven(
+          maven: 'maven 3.8.3',
+          apiVersion: v1
+          mavenLocalRepo: '.repository',
+      ){
+        // Run the maven build
+        sh "mvn clean verify"
+      }
       mvnHome = tool 'maven 3.8.3'
     }
     
