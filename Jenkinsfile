@@ -61,6 +61,10 @@ node {
 //             }
 //         }
     }
+        
+    stage("Update deploy file"){
+       sh "sed -i s/VERSION/${params.VERSION}/g hello.yaml"
+    }
 
     
     // kubernetes에 배포하는 stage, 배포할 yaml파일(필자의 경우 test.yaml)은 jenkinsfile과 마찬가지로 git소스 root에 위치시킨다.
