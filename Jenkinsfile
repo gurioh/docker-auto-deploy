@@ -63,7 +63,16 @@ node {
     }
         
     stage("Update deploy file"){
-       sh "sed -i s/VERSION/${params.VERSION}/g hello.yaml"
+            sh ```
+                echo "test > test.yaml"
+            ```
+            sh "ls -al"
+            git url:'https://git.osci.kr/scm/pd/playce-roro-v2.git', branch:'henry'
+            git add test.yml
+            git commit -m "Add yaml"
+            
+        
+//        sh "sed -i s/VERSION/${params.VERSION}/g hello.yaml"
     }
 
     
