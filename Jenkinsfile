@@ -22,6 +22,7 @@ node {
     
     stage('Ready') {
       sh "echo 'Ready to build'"
+      git url:'https://github.com/guriOH/docker-auto-deploy.git', branch:'main'
       withMaven(
           maven: 'maven 3.8.3',
           mavenLocalRepo: '.repository',
