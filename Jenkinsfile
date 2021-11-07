@@ -47,7 +47,7 @@ node {
     
     stage("Push image") {
         
-         docker.withRegistry("http://$nexus") {
+         docker.withRegistry("http://$nexus", "$nexusCredential") {
              def customImage = docker.build("build-test/dockertest:${params.VERSION}")
              customImage.push()
          }
