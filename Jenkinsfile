@@ -10,7 +10,7 @@ node {
 
 //     stage('Checkout Source') {
 
-//         git url:'https://github.com/guriOH/docker-auto-deploy.git', branch:'main', credentialsId:'bitbucket'
+//         git url:'https://github.com/guriOH/docker-auto-deploy.git', branch:'main'
 //         withMaven(
 //             maven: 'maven 3.8.3', // (1)
 //             mavenLocalRepo: '.repository', // (2)
@@ -22,7 +22,7 @@ node {
     
     stage('Ready') {
       sh "echo 'Ready to build'"
-      git url:'https://git.osci.kr/scm/pd/playce-roro-v2.git', branch:'henry', credentialsId:'bitbucket'
+      git url:'https://github.com/guriOH/docker-auto-deploy.git', branch:'main'
       withMaven(
           maven: 'maven 3.8.3',
           mavenLocalRepo: '.repository',
