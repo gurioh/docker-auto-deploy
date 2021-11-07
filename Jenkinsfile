@@ -72,7 +72,7 @@ node {
 //             git commit -m "Add yaml"
             sh "echo ${params.VERSION}"
             sh "sed -i s/VERSION/${params.VERSION}/g hello.yaml"
-            sh "cat hello.yalm"
+            sh "cat hello.yaml"
         
 //        sh "sed -i s/VERSION/${params.VERSION}/g hello.yaml"
     }
