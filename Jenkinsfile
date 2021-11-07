@@ -20,7 +20,6 @@ node {
       sh "echo 'Ready to build'"
       withMaven(
           maven: 'maven 3.8.3',
-          apiVersion: v1
           mavenLocalRepo: '.repository',
       ){
         // Run the maven build
