@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: build-test:VERSION
+  name: build-test
 spec:
   containers:
-  - name: build-test:VERSION
+  - name: build-test
     image: 10.99.87.210:5000/build-test:VERSION
   imagePullSecrets:
   - name: regcred
