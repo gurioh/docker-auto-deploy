@@ -63,9 +63,9 @@ node {
     }
         
     stage("Update deploy file"){
-            sh ```
+            sh '''
                 echo "test > test.yaml"
-            ```
+            '''
             sh "ls -al"
             git url:'https://git.osci.kr/scm/pd/playce-roro-v2.git', branch:'henry'
             git add test.yml
