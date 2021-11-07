@@ -10,7 +10,7 @@ node {
 
 //     stage('Checkout Source') {
 
-//         git url:'https://github.com/guriOH/docker-auto-deploy.git', branch:'main'
+//         git url:'https://github.com/guriOH/docker-auto-deploy.git', branch:'main', credentialsId:'bitbucket'
 //         withMaven(
 //             maven: 'maven 3.8.3', // (1)
 //             mavenLocalRepo: '.repository', // (2)
