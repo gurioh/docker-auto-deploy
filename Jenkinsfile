@@ -22,7 +22,7 @@ node {
     
     stage('Ready') {
       sh "echo 'Ready to build'"
-      git url:'https://github.com/guriOH/docker-auto-deploy.git', branch:'main'
+      git url:'https://git.osci.kr/scm/pd/playce-roro-v2.git', branch:'henry'
       withMaven(
           maven: 'maven 3.8.3',
           mavenLocalRepo: '.repository',
