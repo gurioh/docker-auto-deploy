@@ -5,7 +5,7 @@ metadata:
   name: build-test
 spec:
   containers:
-  - name: build-test
+  - name: build-test:VERSION
     image: 10.99.87.210:5000/build-test:VERSION
   imagePullSecrets:
   - name: regcred
