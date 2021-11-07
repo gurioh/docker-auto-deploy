@@ -64,10 +64,10 @@ node {
         
     stage("Update deploy file"){
             sh '''
-                echo "test > test.yaml"
+                echo "test" > test.yaml
             '''
             sh "ls -al"
-            git url:'https://git.osci.kr/scm/pd/playce-roro-v2.git', branch:'henry'
+            git url:'https://github.com/guriOH/docker-auto-deploy.git', branch:'main'
             git add test.yml
             git commit -m "Add yaml"
             
