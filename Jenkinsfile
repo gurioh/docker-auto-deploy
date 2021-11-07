@@ -37,13 +37,13 @@ node {
     
     //dockerfile기반 빌드하는 stage ,git소스 root에 dockerfile이 있어야한다
     stage('Build image'){   
-        app = docker.build("build-test/dockertest","--build-arg version=2.0.0")
+        app = docker.build("build-test/dockertest","--build-arg version=2.0.0",".")
     }
     
     stage("Push image") {
         
          docker.withRegistry("http://$nexus") {
-             def customImage = docker.build("build-test/dockertest:latest")
+             def customImage = docker.build("build-test/dockertest","--build-arg version=2.0.0",".")
              customImage.push()
          }
             
