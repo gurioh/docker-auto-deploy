@@ -1,12 +1,22 @@
 
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: build-test
+# spec:
+#   containers:
+#   - name: build-test
+#     image: 10.99.87.210:5000/build-test/dockertest:VERSION
+#   imagePullSecrets:
+#   - name: regcred
+
 apiVersion: v1
 kind: Pod
 metadata:
-  name: build-test
 spec:
   containers:
-  - name: build-test
-    image: 10.99.87.210:5000/build-test/dockertest:VERSION
+  - name: roro-v2
+    image: 10.99.87.210:5000/roro-v2:VERSION
   imagePullSecrets:
   - name: regcred
 
