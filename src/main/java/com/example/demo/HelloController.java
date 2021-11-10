@@ -19,6 +19,7 @@ package com.example.demo;/*
  * Hoon Oh       10월 05, 2021            First Draft.
  */
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -34,9 +35,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
+    @Value("${echo.log.level}")
+    String echoLogLebel;
+
     @GetMapping(value = "/test")
     public String getApiTest(){
-        return "HelloWorld 2";
+
+        return "HelloWorld echo log level - "+echoLogLebel;
     }
 
 }
