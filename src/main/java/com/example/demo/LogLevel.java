@@ -16,13 +16,11 @@ package com.example.demo;/*
  * Revision History
  * Author            Date                Description
  * ---------------  ----------------    ------------
- * Hoon Oh       10월 05, 2021            First Draft.
+ * Hoon Oh       11월 10, 2021            First Draft.
  */
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 /**
  * <pre>
@@ -33,19 +31,18 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Hoon Oh
  * @version 1.0
  */
-@RestController
-public class HelloController {
+@Component
+@ConfigurationProperties(prefix = "log")
+public class LogLevel {
 
-   // @Autowired
-   // LogLevel logLevel;
+    private String level;
 
-    @Value("${spring.log.level}")
-    String logLevel;
-    @GetMapping(value = "/test")
-    public String getApiTest(){
-
-        return "HelloWorld echo log level - "+logLevel;
+    public String getLevel(){
+        return level;
     }
 
+    public void setLevel(String level) {
+        this.level = level;
+    }
 }
-//end of HelloController.java
+//end of LogLevel.java

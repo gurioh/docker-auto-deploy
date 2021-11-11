@@ -1,0 +1,30 @@
+spring:
+  profiles:
+    active: prd
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: local
+  log:
+    level: INFO
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  log:
+    level: DEBUG
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: prd
+  log:
+    level: TRACE

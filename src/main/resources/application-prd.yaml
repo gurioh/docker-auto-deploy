@@ -1,0 +1,6 @@
+spring:
+  config:
+    activate:
+      on-profile: prd
+log:
+  level: DEBUG
